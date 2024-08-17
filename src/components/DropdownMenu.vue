@@ -44,15 +44,17 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="dropdown">
-    <button @click="toggleDropdown">Menu</button>
+    <button class="trigger" @click="toggleDropdown">Menu</button>
 
     <!--ドロップダウンメニュー-->
     <ul v-if="isOpen" class="dropdown-menu">
       <li class="dropdown-navigate-trigger">
         <button @click="navigateDropdown" class="dropdown-navigate-trigger-btn">
           navigateDropdown
+          <span class="material-symbols-outlined"> chevron_right </span>
         </button>
       </li>
+      <!--<li class="divider"></li>-->
       <li class="dropdown-menu-item">hoge</li>
       <li class="dropdown-menu-item">fuga</li>
     </ul>
@@ -60,18 +62,20 @@ onBeforeUnmount(() => {
     <!--サブコンテンツ-->
     <ul v-if="isSubContentsOpen" class="dropdown-sub-contents">
       <li class="dropdown-back-trigger">
-        <button @click="backDropdown" class="dropdown-back-trigger-btn">backDropdown</button>
+        <button @click="backDropdown" class="dropdown-back-trigger-btn">
+          <span class="material-symbols-outlined"> chevron_left </span></button
+        >subContents
       </li>
-      <li class="dropdown-sub-menu-item">subhoge <button>action</button></li>
-      <li class="dropdown-sub-menu-item">subfuga <button>action</button></li>
+      <li class="dropdown-sub-menu-item">subhoge <button class="action-sample">action</button></li>
+      <li class="dropdown-sub-menu-item">subfuga <button class="action-sample">action</button></li>
     </ul>
   </div>
 </template>
 
 <style scoped>
-.dropdown {
-  position: relative;
-  display: inline-block;
+.trigger:focus-visible {
+  outline-offset: 2px;
+  outline: 2px solid blue;
 }
 
 /* ドロップダウンメニュー */
@@ -101,7 +105,12 @@ onBeforeUnmount(() => {
 
 .dropdown-navigate-trigger-btn {
   list-style: none;
-  padding: 4px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 32px;
   background-color: white;
   border: none;
   color: var(--color-text);
@@ -117,6 +126,19 @@ onBeforeUnmount(() => {
   color: white;
 }
 
+.dropdown-navigate-trigger-btn:focus-visible {
+  background-color: blue;
+  color: white;
+}
+
+.divider {
+  list-style: none;
+  height: 1px;
+  background-color: whitesmoke;
+  width: 100%;
+  margin: 4px 0px;
+}
+
 /* サブコンテンツ */
 .dropdown-sub-contents {
   display: block;
@@ -124,30 +146,41 @@ onBeforeUnmount(() => {
   background-color: white;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  padding: 4px 0px 0px 0px;
+  padding: 4px 0px 4px 0px;
 }
 
 .dropdown-back-trigger {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
   list-style: none;
-  padding: 0px;
+  padding: 4px 8px;
+  font-weight: bold;
 }
 
 .dropdown-back-trigger-btn {
   list-style: none;
-  padding: 4px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   background-color: white;
   border: none;
   color: var(--color-text);
   line-height: 1.6;
   font-size: 15px;
   cursor: pointer;
-  width: 100%;
-  text-align: left;
 }
 
 .dropdown-back-trigger-btn:hover {
-  background-color: blue;
-  color: white;
+  background-color: whitesmoke;
+}
+
+.dropdown-back-trigger-btn:focus-visible {
+  outline-offset: 2px;
+  outline: 2px solid blue;
 }
 
 .dropdown-sub-menu-item {
@@ -156,6 +189,15 @@ onBeforeUnmount(() => {
   flex-direction: row;
   justify-content: space-between;
   padding: 8px 16px;
-  gap: 24px;
+  gap: 32px;
+}
+
+.action-sample:focus-visible {
+  outline-offset: 2px;
+  outline: 2px solid blue;
+}
+
+.material-symbols-outlined {
+  line-height: 0;
 }
 </style>
