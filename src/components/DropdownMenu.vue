@@ -50,13 +50,12 @@ onBeforeUnmount(() => {
     <ul v-if="isOpen" class="dropdown-menu">
       <li class="dropdown-navigate-trigger">
         <button @click="navigateDropdown" class="dropdown-navigate-trigger-btn">
-          navigateDropdown
+          subcontents
           <span class="material-symbols-outlined"> chevron_right </span>
         </button>
       </li>
-      <!--<li class="divider"></li>-->
-      <li class="dropdown-menu-item">hoge</li>
-      <li class="dropdown-menu-item">fuga</li>
+      <li class="dropdown-menu-item">action</li>
+      <li class="dropdown-menu-item">action</li>
     </ul>
 
     <!--サブコンテンツ-->
@@ -64,10 +63,10 @@ onBeforeUnmount(() => {
       <li class="dropdown-back-trigger">
         <button @click="backDropdown" class="dropdown-back-trigger-btn">
           <span class="material-symbols-outlined"> chevron_left </span></button
-        >subContents
+        >subcontents
       </li>
-      <li class="dropdown-sub-menu-item">subhoge <button class="action-sample">action</button></li>
-      <li class="dropdown-sub-menu-item">subfuga <button class="action-sample">action</button></li>
+      <li class="dropdown-sub-menu-item">hoge <button class="action-sample">action</button></li>
+      <li class="dropdown-sub-menu-item">fuga <button class="action-sample">action</button></li>
     </ul>
   </div>
 </template>
@@ -91,6 +90,7 @@ onBeforeUnmount(() => {
 .dropdown-menu-item {
   list-style: none;
   padding: 8px 16px;
+  cursor: pointer;
 }
 
 .dropdown-menu-item:hover {
@@ -110,7 +110,7 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
-  gap: 32px;
+  gap: 12px;
   background-color: white;
   border: none;
   color: var(--color-text);
@@ -131,14 +131,6 @@ onBeforeUnmount(() => {
   color: white;
 }
 
-.divider {
-  list-style: none;
-  height: 1px;
-  background-color: whitesmoke;
-  width: 100%;
-  margin: 4px 0px;
-}
-
 /* サブコンテンツ */
 .dropdown-sub-contents {
   display: block;
@@ -155,7 +147,7 @@ onBeforeUnmount(() => {
   gap: 8px;
   align-items: center;
   list-style: none;
-  padding: 4px 8px;
+  padding: 4px 24px 4px 8px;
   font-weight: bold;
 }
 
@@ -189,7 +181,7 @@ onBeforeUnmount(() => {
   flex-direction: row;
   justify-content: space-between;
   padding: 8px 16px;
-  gap: 32px;
+  gap: 12px;
 }
 
 .action-sample:focus-visible {
