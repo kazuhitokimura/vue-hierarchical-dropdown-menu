@@ -144,7 +144,7 @@ onBeforeUnmount(() => {
 .dropdown-back-trigger {
   display: flex;
   flex-direction: row;
-  gap: 4px;
+  gap: 8px;
   align-items: center;
   list-style: none;
   padding: 4px 32px 4px 8px;
