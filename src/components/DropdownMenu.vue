@@ -50,7 +50,7 @@ onBeforeUnmount(() => {
     <ul v-if="isOpen" class="dropdown-menu">
       <li class="dropdown-navigate-trigger">
         <button @click="navigateDropdown" class="dropdown-navigate-trigger-btn">
-          subcontents
+          contentsforaction
           <span class="material-symbols-outlined"> chevron_right </span>
         </button>
       </li>
@@ -63,7 +63,7 @@ onBeforeUnmount(() => {
       <li class="dropdown-back-trigger">
         <button @click="backDropdown" class="dropdown-back-trigger-btn">
           <span class="material-symbols-outlined"> chevron_left </span></button
-        >subcontents
+        >contentsforaction
       </li>
       <li class="dropdown-sub-menu-item">hoge <button class="action-sample">action</button></li>
       <li class="dropdown-sub-menu-item">fuga <button class="action-sample">action</button></li>
@@ -144,10 +144,10 @@ onBeforeUnmount(() => {
 .dropdown-back-trigger {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 4px;
   align-items: center;
   list-style: none;
-  padding: 4px 24px 4px 8px;
+  padding: 4px 32px 4px 8px;
   font-weight: bold;
 }
 
