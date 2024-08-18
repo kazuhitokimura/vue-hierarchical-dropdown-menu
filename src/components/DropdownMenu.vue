@@ -5,12 +5,10 @@ const isOpen = ref(false)
 const isSubContentsOpen = ref(false)
 
 const toggleDropdown = () => {
-  // isOpen または isSubContentsOpen が true の場合、両方を false にする
   if (isOpen.value || isSubContentsOpen.value) {
     isOpen.value = false
     isSubContentsOpen.value = false
   } else {
-    // そうでない場合は通常通りのトグル操作
     isOpen.value = !isOpen.value
   }
 }
@@ -20,13 +18,13 @@ const navigateDropdown = () => {
   isSubContentsOpen.value = true
 }
 
-const backDropdown = () => {
+const backDropdown = (event) => {
+  event.stopPropagation() // イベント伝播を防ぐ
   isOpen.value = true
   isSubContentsOpen.value = false
 }
 
 const closeDropdown = (event) => {
-  // クリックした場所がドロップダウンメニュー内でない場合、メニューを閉じる
   if (!event.target.closest('.dropdown-menu') && !event.target.closest('.dropdown')) {
     isOpen.value = false
     isSubContentsOpen.value = false
@@ -62,8 +60,9 @@ onBeforeUnmount(() => {
     <ul v-if="isSubContentsOpen" class="dropdown-sub-contents">
       <li class="dropdown-back-trigger">
         <button @click="backDropdown" class="dropdown-back-trigger-btn">
-          <span class="material-symbols-outlined"> chevron_left </span></button
-        >contentsforaction
+          <span class="material-symbols-outlined"> chevron_left </span>
+        </button>
+        contentsforaction
       </li>
       <li class="dropdown-sub-menu-item">hoge <button class="action-sample">action</button></li>
       <li class="dropdown-sub-menu-item">fuga <button class="action-sample">action</button></li>
