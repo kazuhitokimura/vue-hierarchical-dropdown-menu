@@ -25,7 +25,10 @@ const backDropdown = (event) => {
 }
 
 const closeDropdown = (event) => {
-  if (!event.target.closest('.dropdown-menu') && !event.target.closest('.dropdown')) {
+  if (
+    (!event.target.closest('.dropdown-menu') && !event.target.closest('.dropdown')) ||
+    event.target.classList.contains('action-sample')
+  ) {
     isOpen.value = false
     isSubContentsOpen.value = false
   }
@@ -52,6 +55,7 @@ onBeforeUnmount(() => {
           <span class="material-symbols-outlined"> chevron_right </span>
         </button>
       </li>
+      <li class="divider"></li>
       <li class="dropdown-menu-item">action</li>
       <li class="dropdown-menu-item">action</li>
     </ul>
@@ -64,6 +68,7 @@ onBeforeUnmount(() => {
         </button>
         contentsforaction
       </li>
+      <li class="divider"></li>
       <li class="dropdown-sub-menu-item">hoge <button class="action-sample">action</button></li>
       <li class="dropdown-sub-menu-item">fuga <button class="action-sample">action</button></li>
     </ul>
@@ -130,6 +135,14 @@ onBeforeUnmount(() => {
   color: white;
 }
 
+.divider {
+  list-style: none;
+  background-color: whitesmoke;
+  height: 1px;
+  width: 100%;
+  margin: 2px 0px;
+}
+
 /* サブコンテンツ */
 .dropdown-sub-contents {
   display: block;
@@ -138,6 +151,8 @@ onBeforeUnmount(() => {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
   padding: 4px 0px 4px 0px;
+  min-width: 320px;
+  max-width: 640px;
 }
 
 .dropdown-back-trigger {
